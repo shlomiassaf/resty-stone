@@ -1,0 +1,32 @@
+{
+    "name": "resty-stone",
+    "version": "0.0.1",
+    "description": "Rest API for keystone.",
+    "main": "index.js",
+    "dependencies": {
+        "methods":  "~1.1.0",
+        "underscore": "~1.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/danielpquinn/keystone-rest.git"
+    },
+    "keywords": [
+        "keystone",
+        "keystonejs"
+    ],
+    "author": {
+        "name": "Shlomi Assaf"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/danielpquinn/keystone-rest/issues"
+    },
+    "homepage": "http://danielpquinn.github.io/keystone-rest/index.html",
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "readmeFilename": "README.md"
+}
