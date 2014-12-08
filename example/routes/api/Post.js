@@ -9,7 +9,8 @@ module.exports.default = {
     "httpMethods": "get",
 
     /*
-     A comma delimited list of allowed http methods for this list that act on a group.
+     A comma delimited list of allowed http methods for this list that acts on a group.
+     A group is an action taken on a list of List (e.g: not accessing a direct instance via defaultKey)
      Set true to inherit from httpMethods.
      WARNING: It is recommended to set this value explicitly (e.g: don`t set true) to prevent catastrophic results.
      For protection, setting httpGroupMethods: TRUE will not drill down to inheriting profiles, the inherited value will be the
