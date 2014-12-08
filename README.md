@@ -20,7 +20,7 @@ This helps keeping performance aligned and creates a unified experience.
 ### AdminUI separation:
 resty-stone create a clear separation between AdminUI configuration and REST domain configuration.
 
-
+See `example` directory to understand how to init a basic REST.
 
 ##IMPORTANT TODO:
 - Add API token authentication (currently relay on session, which is not CSRF proof).
