@@ -11,7 +11,7 @@ The allows a high level of customization per List instance/group.
 
 ###Highly customizable:
 resty-stone lets you control the behavior of your List or let it do its magic automatically.
-Customize fields, request handling, serialization, filtering and more.
+Customize fields, request handling, serialization, filtering, custom remote functions and more.
  
 ### Relay on KeystoneJS building blocks.
 resty-stone uses KeystoneJS infrastructure where possible.
