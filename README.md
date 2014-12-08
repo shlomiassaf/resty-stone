@@ -23,11 +23,11 @@ resty-stone create a clear separation between AdminUI configuration and REST dom
 
 
 ##IMPORTANT TODO:
-Add API token authentication (currently relay on session, which is not CSRF proof).
+-Add API token authentication (currently relay on session, which is not CSRF proof).
 
 ##TODO:
-Implement nested List handling.
-Support more authentication policies (OAuth1, OAuth2)
-Auto-generate client (native js, angular)?
+-Implement nested List handling.
+-Support more authentication policies (OAuth1, OAuth2)
+-Auto-generate client (native js, angular)?
 
 #LICENCE: MIT
