@@ -3,7 +3,9 @@
 Rest API toolkit for KeystoneJS.
 
 A powerful and robust toolkit for building Web API`s.
- 
+
+####See `example` directory to understand how to init a basic REST.
+
 ## Key features:
 ###REST Domain
 resty-stone create a new layer of metadata to control the behavior of List instances.
@@ -20,7 +22,12 @@ This helps keeping performance aligned and creates a unified experience.
 ### AdminUI separation:
 resty-stone create a clear separation between AdminUI configuration and REST domain configuration.
 
-See `example` directory to understand how to init a basic REST.
+
+## Install:
+Not published on NPM at the moment, use:
+```
+npm isntall shlomiassaf/resty-stone --save
+```
 
 ##IMPORTANT TODO:
 - Add API token authentication (currently relay on session, which is not CSRF proof).
