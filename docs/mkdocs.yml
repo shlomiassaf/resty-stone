@@ -1,0 +1,11 @@
+site_name: resty-stone
+pages:
+- [index.md, Home]
+- [documentation.md, Documentation]
+- [quickstart.md, Quick Start]
+- [about.md, About]
+site_url: http://shlomiassaf.github.io/resty-stone
+site_dir: ../gh-pages
+repo_url: https://github.com/shlomiassaf/resty-stone/
+site_description: Rest API toolkit for KeystoneJS framework
+site_author: Shlomi Assaf
