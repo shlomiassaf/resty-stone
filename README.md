@@ -6,7 +6,7 @@ A powerful and robust toolkit for building Web API`s.
 
 Click here for [Documentation](http://shlomiassaf.github.io/resty-stone)
 
-####See [example](./tree/master/example) directory to understand how to init a basic REST.
+####See [example](./example) directory to understand how to init a basic REST.
 
 ## Key features:
 ###Works out of the box
