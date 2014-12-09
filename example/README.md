@@ -171,7 +171,7 @@ To customize a `RestList`:
 To sum it up:  
 Use __Resource Metadata__ to differentiate __Metadata__ based on __Resource__.  
 Use __Resource Metadata Profile__ to differentiate a __Resource__ based on __Profiles/Authentication__.  
-Use __RestList__ to differentiate __Behaviors__ based on a __Profile__ or a __Resource.  
+Use __RestList__ to differentiate __Behaviors__ based on a __Profile__ or a __Resource__.  
 
 This pattern provides the ability to create custom behaviors for group of resource, specific resources and profiles.  
 Combine it with __Function Handlers__ & __Transformation Handlers__ to achieve fine-grained control over your resources.
