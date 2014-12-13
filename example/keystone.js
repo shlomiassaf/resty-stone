@@ -98,5 +98,5 @@ keystone.set('nav', {
 var restyStone = require("resty-stone");
 keystone.set('resty api base address', "/api");
 keystone.set('resty meta location', "./routes/api");
-
+keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION ); // keep KeystoneJS cookie based session for auth (use in dev only!)
 keystone.start(restyStone.start());

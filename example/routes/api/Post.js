@@ -56,6 +56,12 @@ module.exports.default = {
     }
 }
 
+module.exports.authorized = {
+    "__extends__": "default",
+    "httpMethods": "get",
+    httpGroupMethods: "get"
+};
+
 module.exports.isAdmin = {
     "__extends__": "default",
 

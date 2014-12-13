@@ -29,7 +29,8 @@ keystone.start();
 ```
 var restyStone = require("resty-stone");
 keystone.set('resty api base address', "/api"); // you can omit this line, it is the same as the default and here for demo only.
-keystone.set('resty meta location', "./routes/api"); // provide the relative path from your project's root, to your Resource metadata folder. 
+keystone.set('resty meta location', "./routes/api"); // provide the relative path from your project's root, to your Resource metadata folder.
+ keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION ); // keep KeystoneJS cookie based session for auth (use in dev only!)
 keystone.start(restyStone.start()); // you can supply 'event' to restyStone.start(), it wil propagate.
 ```  
 > __NOTE__:  
@@ -38,6 +39,57 @@ keystone.start(restyStone.start()); // you can supply 'event' to restyStone.star
 
 __This is it, the API is ready to lunch.__  
 If you lunch it now you wont be able to access any resource, we did not setup metadata for __Resources__ yet.
+
+## Authentication:
+resty-stone has a built-in __Basic Auth__ token based authentication.  
+To enable it:  
+  - Set `resty auth type` to restyStone.AUTH_TYPE.TOKEN  
+  - Set `resty token header` to the header name used for the token.
+```
+keystone.set('resty auth type', restyStone.AUTH_TYPE.TOKEN ); // keep KeystoneJS cookie based session for auth (use in dev only!)
+keystone.set('resty token header', "api-token" );
+```
+
+###Endpoints:  
+__Login__:  SERVER/BASE_ADDRESS/auth/login
+__Logout__: SERVER/BASE_ADDRESS/auth/logout
+
+Example for the server `www.example.com` with `resty api base address` set to `/api`:
+```
+http://www.example.com/api/auth/login
+http://www.example.com/api/auth/logout
+```
+
+> NOTE:  
+> Don't forget to send the api token to logout requests.
+
+### Authentication methods:
+You can use __Basic Auth__ or simple user object in the request body, formatted as json (identical to keystone login).  
+For example, login for username __demo__ and pasword __demo-pass__:   
+##### Basic Auth
+```
+Authorization: Basic ZGVtbzpkZW1vLXBhc3M
+```
+##### Request body
+```
+{
+  "email": "demo",
+  "password": "demo-pass"
+}
+
+```
+
+A successful authentication will return:
+```
+{
+    "success": true,
+    "resultType": "notSet",
+    "modelType": "notSet",
+    "result": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJrZXlzdG9uZS5zaWQiOiJfUzRveUxlRFBPZk1NQ2k2eGI4QVNleDIifQ.Rp6o1ZyvF25Otstf3aXnJjugqM2DSQj2lxhlB8h9qbU"
+}
+```
+The property `success` indicates the result status, the property `result` holds the token.
+You can now use this token in the header of each call to authenticate it.
 
 ## Exposing Resources:
 Each List model in KeystoneJS is not exposed by default.
@@ -59,17 +111,20 @@ So, A Resource Metadata is:
 > The file name must be the same as the name used to register its corresponding List model, case sensitive.  
 > For example, the file name should be the __bold__ part from: var Post = new keystone.List(__'Post'__, {});
 
-Currently there are only 2 profiles:
+Currently there are 3 profiles:
 
-1) default  
-2) isAdmin
+| Name        | Desc                                                                        |
+| ----------- | --------------------------------------------------------------------------- |
+| default     | The default profile for not authorized users. (if set, resource is public)  |
+| authorized  | Profile for registered users.                                               |
+| isAdmin     | Profile for administrator/s                                                 |
 
 Take a look at `./routes/api/Post.js` for an example.
 
+
 > __NOTES:__
-> - There is a 3rd missing profile, a logged user that is not an admin, it will be added soon.
-> - These are the only profiles, at least until KeystoneJS supports multiple profiles.
-> - Ignoring one of the profiles in your Resource Metadata modules will result in a `resty-stone` default module which is a deny all module.
+> - These are the only profiles, at least until KeystoneJS supports multiple profiles.  
+> - Setting a `default` profile exposes a resource to any request, authorized or not.
 
 ### Metadata Inheritance:   
 Sometimes, most of the difference between profiles is minor.  
