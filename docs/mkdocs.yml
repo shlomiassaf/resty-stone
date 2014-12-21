@@ -1,8 +1,15 @@
 site_name: resty-stone
 pages:
-- [index.md, Home]
-- [documentation.md, Documentation]
+- ['index.md', Home]
+- ['tutorial/quickstart.md', 'Tutorial', 'Quickstart']
+- ['tutorial/1-serialization.md', 'Tutorial', '1 - Serialization']
+- ['tutorial/2-requests-and-responses.md', 'Tutorial', '2 - Requests and responses']
+- ['tutorial/3-class-based-views.md', 'Tutorial', '3 - Class based views']
+- ['tutorial/4-authentication-and-permissions.md', 'Tutorial', '4 - Authentication and permissions']
+- ['tutorial/5-relationships-and-hyperlinked-apis.md', 'Tutorial', '5 - Relationships and hyperlinked APIs']
+- ['tutorial/6-viewsets-and-routers.md', 'Tutorial', '6 - Viewsets and routers']
 - [quickstart.md, Quick Start]
+- [learnByExample.md, Learn By Example]
 - [about.md, About]
 site_url: http://shlomiassaf.github.io/resty-stone
 site_dir: ../../gh-pages

@@ -208,7 +208,7 @@ Example: `www.myapi.com/api/Post?action=myRpc` will call invoke `myRpc` on the P
 
 #### Transformation handlers
 `RestList` is also responsible for object serialization, it is not exactly a serialization process but more a transformation process.
-  
+   
 Since KeystoneJS is built on NodeJS & MongoDB, serialization is built in, we only need to transform.
 
 Transformation is done using the public function `_render(req, instance)` that gets an `express` Request and an instance of the resource

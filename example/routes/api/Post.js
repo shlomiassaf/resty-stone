@@ -62,7 +62,7 @@ module.exports.authorized = {
     httpGroupMethods: "get"
 };
 
-module.exports.isAdmin = {
+module.exports.admin = {
     "__extends__": "default",
 
     "httpMethods": "get,post,put,delete",

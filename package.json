@@ -1,8 +1,8 @@
 {
   "name": "resty-stone",
-  "version": "0.0.2",
+  "version": "v0.0.2-alpha",
   "keystoneVersion": "0.2.35",
-  "description": "Rest API for keystone.",
+  "description": "REST API for keystone.",
   "main": "index.js",
   "dependencies": {
     "basic-auth": "^1.0.0",
@@ -10,11 +10,15 @@
     "methods": "~1.1.0",
     "underscore": "~1.6.0"
   },
+  "optionalDependencies ": {
+      "resty-stone-customtypes": "~0.0.1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielpquinn/keystone-rest.git"
+    "url": "https://github.com/shlomiassaf/resty-stone.git"
   },
   "keywords": [
+    "rest",
     "keystone",
     "keystonejs"
   ],
@@ -23,9 +27,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danielpquinn/keystone-rest/issues"
+    "url": "https://github.com/shlomiassaf/resty-stone/issues"
   },
-  "homepage": "http://danielpquinn.github.io/keystone-rest/index.html",
+  "homepage": "http://shlomiassaf.github.io/resty-stone",
   "licenses": [
     {
       "type": "MIT"
