@@ -1,4 +1,4 @@
-# resty-stone  
+# resty-stone
 
 Rest API toolkit for KeystoneJS.
 
@@ -35,7 +35,7 @@ resty-stone create a clear separation between AdminUI configuration and REST dom
 ## Install:
 Not published on NPM at the moment, use:
 ```
-npm isntall shlomiassaf/resty-stone --save
+npm isntall resty-stone --save
 ```
 
 ##TODO:
