@@ -1,6 +1,5 @@
 /**
- * Local type handler for CloudinaryImage.
- * DO NOT USE AS AN EXAMPLE! to create/override custom type handlers see documentation.
+ * An exapmle of how to define a custom field type to be used on any column of the defined Field.
  */
 var rs = require("resty-stone");
 
