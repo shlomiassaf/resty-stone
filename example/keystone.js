@@ -95,8 +95,16 @@ keystone.set('nav', {
 
 // Start Keystone to connect to your database and initialise the web server
 
-var restyStone = require("resty-stone");
+var restyStone = require("resty-stone")(keystone); // optional if keystone directory is in the same level of rest-stone directory in 'node_modules' directory.
 keystone.set('resty api base address', "/api");
 keystone.set('resty meta location', "./routes/api");
 keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION ); // keep KeystoneJS cookie based session for auth (use in dev only!)
+
+
+// register a custom field type, paired with a specific Field type.
+restyStone.registerCustomType(require('./customTypeHandlers/cloudinaryimage'));
+
+// register a custom field type, not paired with a specific type but with a specific column/s
+restyStone.registerCustomType(require('./customTypeHandlers/postContent'));
+
 keystone.start(restyStone.start());

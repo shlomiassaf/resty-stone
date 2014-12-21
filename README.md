@@ -4,7 +4,7 @@ Rest API toolkit for KeystoneJS.
 
 A powerful and robust toolkit for building Web API`s.
 
-Click here for [Documentation](http://shlomiassaf.github.io/resty-stone)
+~~Click here for [Documentation](http://shlomiassaf.github.io/resty-stone)~~ (Not updated for v0.0.3 yet)
 
 ####See [example](./example) directory to understand how to init a basic REST.
 

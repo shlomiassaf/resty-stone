@@ -43,8 +43,7 @@ module.exports.default = {
             "publishedDate",
             "slug",
             "author",
-            "content.brief",
-            "content.extended",
+            "content:postContent", // see customTypeHandlers.postContent
             "categories",
             "tags"
         ],
@@ -58,8 +57,24 @@ module.exports.default = {
 
 module.exports.authorized = {
     "__extends__": "default",
-    "httpMethods": "get",
-    httpGroupMethods: "get"
+    "httpMethods": "get,put",
+    "columns": {
+        "visible": [
+            "title",
+            "publishedDate",
+            "slug",
+            "author",
+            "content.brief", // this time we only show the brief
+            "categories",
+            "tags"
+        ],
+        "no_filter": [
+            "state",
+            "slug",
+            "_id"
+        ]
+    }
+
 };
 
 module.exports.admin = {
@@ -67,5 +82,21 @@ module.exports.admin = {
 
     "httpMethods": "get,post,put,delete",
     httpGroupMethods: "get,post,put,delete",
-    "permanentFilter": undefined
+    "permanentFilter": undefined,
+    "columns": {
+        "visible": [
+            "title",
+            "publishedDate",
+            "slug",
+            "author",
+            "content", // this time we show the original value.
+            "categories",
+            "tags"
+        ],
+        "no_filter": [
+            "state",
+            "slug",
+            "_id"
+        ]
+    }
 }

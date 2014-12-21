@@ -5,12 +5,14 @@ The main resource our blog use is the Post, we will expose this resource via RES
 ## Structure:
 Consider the current directory level as the root of your KeystoneJS project.
 
-| Path                   | Type    | Desc                                                                        |
-| ---------------------- | ------- | --------------------------------------------------------------------------- |
-| `./keystone.js`        | File    | Exists in your project, modified to init resty-store.                       |
-| `./routes`             | Folder  | Exists in your project.                                                     |
-| `./routes/api`         | Folder  | Does not exist, please create. Holds all metadata for exposed __Resources__ |
-| `./routes/api/Post.js` | File    | Does not exist, please create. Defines Post resource metadata               |
+| Path                                      | Type    | Desc                                                                        |
+| ----------------------------------------- | ------- | --------------------------------------------------------------------------- |
+| `./keystone.js`                           | File    | Exists in your project, modified to init resty-store.                       |
+| `./routes`                                | Folder  | Exists in your project.                                                     |
+| `./routes/api`                            | Folder  | Does not exist, please create. Holds all metadata for exposed __Resources__ |
+| `./routes/api/Post.js`                    | File    | Does not exist, please create. Defines Post resource metadata               |
+| `./customTypeHandlers/postContent.js`     | File    | Does not exist, please create. Defines Custom field type handler            |
+| `./customTypeHandlers/cloudinaryimage.js` | File    | Does not exist, please create. Defines Custom field type handler            |
 
 
 ## Initialization
@@ -27,11 +29,24 @@ keystone.start();
  
  __With__:  
 ```
-var restyStone = require("resty-stone");
-keystone.set('resty api base address', "/api"); // you can omit this line, it is the same as the default and here for demo only.
-keystone.set('resty meta location', "./routes/api"); // provide the relative path from your project's root, to your Resource metadata folder.
- keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION ); // keep KeystoneJS cookie based session for auth (use in dev only!)
-keystone.start(restyStone.start()); // you can supply 'event' to restyStone.start(), it wil propagate.
+// register rest.
+var restyStone = require("resty-stone")(keystone);
+
+// you can omit this line, it is the same as the default and here for demo only.
+keystone.set('resty api base address', "/api"); 
+
+// provide the relative path from your project's root, to your Resource metadata folder.
+
+keystone.set('resty meta location', "./routes/api"); 
+
+// keep KeystoneJS cookie based session for auth (use in dev only!)
+keystone.set('resty auth type', restyStone.AUTH_TYPE.SESSION ); 
+
+// register a custom type handler.
+restyStone.registerCustomType(require('./restTypeHandlers/postContent'));
+
+// you can supply 'event' to restyStone.start(), it wil propagate.
+keystone.start(restyStone.start()); 
 ```  
 > __NOTE__:  
 > It is also possible execute `restyStone.start()` and `keystone.start()` separately, as long as `restyStone.start()` comes 1st.
