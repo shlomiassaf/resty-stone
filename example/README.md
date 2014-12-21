@@ -30,6 +30,7 @@ keystone.start();
  __With__:  
 ```
 // register rest.
+// supplying keystone is optional if keystone directory is in the same level of rest-stone directory in 'node_modules' directory.
 var restyStone = require("resty-stone")(keystone);
 
 // you can omit this line, it is the same as the default and here for demo only.
