@@ -40,8 +40,11 @@ npm install resty-stone --save
 
 ## Example  
 Lets demonstrate a simple WebAPI for the model Post in a KeystoneJS blog.  
-We will expose a read only (HTTP GET) access for all users (unauthenticated & authenticated).  
-The only Post instanced we expose are Post's with a state = 'published', we only expose 3 columns: title, slug and content.brief
+We will expose the model `Post` as a resource, it will:  
+  - Be a read only (HTTP GET) access for all users (unauthenticated & authenticated).  
+  - Expos Only Post instanced with a state = 'published'.  
+  - Show only 3 columns: title, slug and content.brief
+    
 First, define the metadata for the resource:
 ```
 module.exports.default = {
