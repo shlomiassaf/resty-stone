@@ -10,7 +10,7 @@
     "methods": "~1.1.0",
     "underscore": "~1.6.0"
   },
-  "optionalDependencies ": {
+  "optionalDependencies": {
       "resty-stone-customtypes": "~0.0.1"
   },
   "repository": {
