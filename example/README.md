@@ -59,10 +59,10 @@ If you lunch it now you wont be able to access any resource, we did not setup me
 ## Authentication:
 resty-stone has a built-in __Basic Auth__ token based authentication.  
 To enable it:  
-  - Set `resty auth type` to restyStone.AUTH_TYPE.TOKEN  
+  - Set `resty auth type` to restyStone.enums.AUTH_TYPE.TOKEN  
   - Set `resty token header` to the header name used for the token.
 ```
-keystone.set('resty auth type', restyStone.AUTH_TYPE.TOKEN ); // keep KeystoneJS cookie based session for auth (use in dev only!)
+keystone.set('resty auth type', restyStone.enums.AUTH_TYPE.TOKEN ); // keep KeystoneJS cookie based session for auth (use in dev only!)
 keystone.set('resty token header', "api-token" );
 ```
 
