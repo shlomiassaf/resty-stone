@@ -1,12 +1,12 @@
 # resty-stone
 
-Rest API toolkit for KeystoneJS.
+__Rest API toolkit for [KeystoneJS](https://github.com/keystonejs/keystone).__
 
 A powerful and robust toolkit for building Web API`s.
 
 Click here for [Documentation](http://shlomiassaf.github.io/resty-stone)
 
-####See [example](https://github.com/shlomiassaf/resty-stone/tree/master/example) directory to understand how to init a basic REST.
+See [example](https://github.com/shlomiassaf/resty-stone/tree/master/example) directory to understand how to init a basic REST.
 
 ## Key features:  
  - __Works out of the box__  
@@ -49,6 +49,7 @@ First, define the metadata for the resource:
 ```
 module.exports.default = {
     "httpMethods": "get",
+    "httpGroupMethods": "get",
     "defaultKey": "slug",
     "permanentFilter": "state:published",
     "columns": {
@@ -115,13 +116,29 @@ Now browse to `http://www.yourapidomain.com/api/posts`, you should see:
 }
 ```
 
+A browse to `http://www.yourapidomain.com/api/posts/hello-world`:
+```
+{
+    "success": true,
+    "resultType": "object",
+    "modelType": "Post",
+    "result":  {
+        "_id": "5480b21f7a43bca82c1d34e8",
+        "slug": "hello-world",
+        "title": "Hello World!"
+        "content": {
+            "brief": "this is a short brief for hello world post!",                
+        }
+    }
+}
+```
 
-##TODO:
+## TODO  
 - Implement nested List handling.
 - Support more authentication policies (OAuth1, OAuth2)
 - Auto-generate client (native js, angular)?
 
-##LICENCE  
+## LICENCE  
 The MIT License (MIT)
 
 Copyright (c) 2014 Shlomi Assaf
