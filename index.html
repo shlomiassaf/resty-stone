@@ -171,6 +171,7 @@ We will expose the model <code>Post</code> as a resource, it will:<br />
 <p>First, define the metadata for the resource:</p>
 <pre><code>module.exports.default = {
     &quot;httpMethods&quot;: &quot;get&quot;,
+    &quot;httpGroupMethods&quot;: &quot;get&quot;,
     &quot;defaultKey&quot;: &quot;slug&quot;,
     &quot;permanentFilter&quot;: &quot;state:published&quot;,
     &quot;columns&quot;: {
@@ -231,6 +232,22 @@ keystone.start(restyStone.start());
         &quot;next&quot;: false,
         &quot;first&quot;: 1,
         &quot;last&quot;: 2
+    }
+}
+</code></pre>
+
+<p>A browse to <code>http://www.yourapidomain.com/api/posts/hello-world</code>:</p>
+<pre><code>{
+    &quot;success&quot;: true,
+    &quot;resultType&quot;: &quot;object&quot;,
+    &quot;modelType&quot;: &quot;Post&quot;,
+    &quot;result&quot;:  {
+        &quot;_id&quot;: &quot;5480b21f7a43bca82c1d34e8&quot;,
+        &quot;slug&quot;: &quot;hello-world&quot;,
+        &quot;title&quot;: &quot;Hello World!&quot;
+        &quot;content&quot;: {
+            &quot;brief&quot;: &quot;this is a short brief for hello world post!&quot;,                
+        }
     }
 }
 </code></pre>

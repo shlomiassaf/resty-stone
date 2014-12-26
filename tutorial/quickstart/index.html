@@ -152,8 +152,8 @@ $ cd rest_model
 <h2 id="resource-metadata">Resource Metadata</h2>
 <p>KeystoneJS Models are called List. By default every List model is hidden and access to it vie REST is not allowed.<br />
 To expose a List model to REST we need to define a Metadata object describing a security model and logic for the resource.  </p>
-<p>Create a new file in the directory <code>rest_model</code> call <code>Post.js</code>.<br />
-Notice the file name is identical to the List model name, this is how <code>resty-stone</code> pair List model with Metadata.</p>
+<p>Create a new file in the directory <code>rest_model</code> called <code>Post.js</code>.<br />
+Notice the file name is identical to the List model name, this is how <code>resty-stone</code> pair a List model with Metadata.</p>
 <pre><code>module.exports.default = {
     &quot;defaultKey&quot;: &quot;slug&quot;,
     &quot;permanentFilter&quot;: &quot;state:published&quot;,
@@ -195,16 +195,19 @@ module.exports.authorized = {
 }
 
 module.exports.admin = {
-    &quot;__extends__&quot; = &quot;default&quot;,
+    &quot;__extends__&quot; = &quot;authorized&quot;,
     &quot;permanentFilter&quot;: undefined,
     &quot;httpMethods&quot;: &quot;get post delete&quot;,
     &quot;httpGroupMethods&quot;: &quot;get&quot;,
 }
 </code></pre>
 
-<p>What is happening?<br />
-We defined 3 different behaviors, 1 for each profile in the system: default(unauthorized), authorized and admin.<br />
-We are also extending the <code>default</code> behavior using the <strong>extends</strong> key followed by the name of the profile we extend.<br />
+<p>So, what is happening here?</p>
+<p>We defined 3 different behaviors, 1 for each profile in the system:<br />
+  1. default(unauthorized) 
+  2. authorized<br />
+  3. admin  </p>
+<p>We are also extending the <code>default</code> behavior using the <strong>extends</strong> key followed by the name of the profile we extend.<br />
 Note that extending is only available for 1st level parameter, e.g: extending columns.visible will overwrite columns.no_filter</p>
 <p><strong><u>default (unauthorized) behavior</u></strong>:<br />
 The definition grants read only access to all users. (registered or guests)<br />
@@ -217,16 +220,16 @@ There are also more visible columns exposed.  </p>
 <p><strong><u>admin behavior</u></strong>:
 The definition grants admin users the same ability as authorized users plus the ability to DELETE posts.      </p>
 <p>A short description for every meta property:<br />
-  - defaultKey          : The identifier column for the resource, default to _id. <code>www.restapi.com/api/:identifier</code><br />
-  - permanentFilter     : A fixed filter added to every query on the resource.<br />
-  - httpMethods         : The allowed methods when accessing the resource using an identifier. (space delimited)<br />
-  - httpGroupMethods    : The allowed methods when accessing the resource without an identifier. (space delimited)<br />
-  - columns.visible     : An array of column names the exposed by the api.
-  - columns.no_filter   : An array of column names the user can not use for filtering.<br />
-  - RestList            : Defines resource behaviors, an instance of restyStone.RestList or derived class instance.</p>
+  - <strong>defaultKey</strong>          : The identifier column for the resource, default to _id. <code>www.restapi.com/api/:identifier</code><br />
+  - <strong>permanentFilter</strong>     : A fixed filter added to every query on the resource.<br />
+  - <strong>httpMethods</strong>         : The allowed methods when accessing the resource using an identifier. (space delimited)<br />
+  - <strong>httpGroupMethods</strong>    : The allowed methods when accessing the resource without an identifier. (space delimited)<br />
+  - <strong>columns.visible</strong>     : An array of column names the exposed by the api.
+  - <strong>columns.no_filter</strong>   : An array of column names the user can not use for filtering.<br />
+  - <strong>RestList</strong>            : Defines resource behaviors, an instance of restyStone.RestList or derived class instance.</p>
 <p>This is it, we have now exposed <code>Post</code> to the WebAPI.<br />
 The metadata acts as a security model for a resource, defining what is allowed at which security level.<br />
-To define the behavior of a model, once access is allowed <code>RestList</code> class`s/instances are used.</p>
+To define the behavior of a model, once access is allowed, <code>RestList</code> class`s/instances are used.</p>
 <h2 id="restlist">RestList</h2>
 <p>RestList is responsible for 2 tasks:<br />
   1. The behavior of a exposed resource for every HTTP method and/or remote procedure calls (RPC).<br />
