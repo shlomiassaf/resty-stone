@@ -51,6 +51,15 @@ module.exports.default = {
             "state",
             "slug",
             "_id"
+        ],
+
+        // enable custom population (either a single string/object or an array of string/object)
+        // SEE http://mongoosejs.com/docs/populate.html
+        "popuplate": [
+            {
+                path: 'categories',
+                select: 'name -id'
+            }
         ]
     }
 }
